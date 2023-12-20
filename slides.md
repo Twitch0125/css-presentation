@@ -19,7 +19,6 @@ Stop doing things the hard (old) way
 
 <toc></toc>
 
-
 ---
 
 # Kaleb Ercanbrack
@@ -47,6 +46,7 @@ Go to these people/sites and you'll get 99.9% of what I'm gonna talk about.
 - Every Layout https://every-layout.dev/
 - Utopia https://utopia.fyi/
 - Cube CSS https://cube.fyi/
+- SmollCSS https://smolcss.dev/
 - Kevin Powell https://www.youtube.com/@KevinPowell
 - Andy Bell https://twitter.com/belldotbz
 
@@ -60,10 +60,9 @@ Cascading Style Sheets.
 
 Text instructions you download to tell your browser how to render things.
 
-*flexible* and **resilient**.
+_flexible_ and **resilient**.
 
 F#&*%ing hard.
-
 
 </v-clicks>
 
@@ -71,13 +70,15 @@ F#&*%ing hard.
 
 ---
 
-# Flexibility 
+# Flexibility
 
-A lot of the time you don't know the devices your users will be using. 
+A lot of the time you don't know the devices your users will be using.
 
-You don't know how they're using their browser. 
+You don't know how they're using their browser.
 
-- Default OpenDyslexic Font, Reader Mode, split-screen, picture in picture mode, on a TV, in the car, on a limited network, zoomed in/out, Multiple tabs open, using a screen reader, keyboard only navigation, eye-tracking software.
+- Default OpenDyslexic Font, Reader Mode, split-screen, picture in picture mode,
+  on a TV, in the car, on a limited network, zoomed in/out, Multiple tabs open,
+  using a screen reader, keyboard only navigation, eye-tracking software.
 
 Could even be a robot.
 
@@ -94,7 +95,9 @@ Generally if we get the responsivenss down then the app is fairly usable. -->
 ---
 layout: center
 ---
+
 # Be the browser's mentor, not its micromanager.
+
 https://buildexcellentwebsit.es/
 ![QR code for buildexcellentwebsit.es](/buildexcellentwebsites.png)
 
@@ -107,6 +110,7 @@ layout: center
 ---
 
 # My example
+
 https://coffee-app.pages.dev/
 ![QR code for my coffee app website](/coffeeapp.png)
 
@@ -118,25 +122,27 @@ There are no breakpoints anywhere in the CSS. The most annoying part of tailwind
 
 # Recent CSS improvements
 
-css nesting and `:has()`
+css nesting,`:has()`, color-mix()
+
 ```css
 ul {
   li {
-    color: green;
+    color: var(--list-text-color, green);
     &[data-error] {
-      color: red;
+      color: var(--list-text-color-error, red);
     }
   }
   &:has(li[data-error]) {
-    background-color: pink;
+    background-color: color-mix(in srgb, var(--list-text-color-error, red), #000);
   }
 }
-
 ```
+
+Do you even need SASS anymore???
 
 <!-- you can copy/paste that into the browser and it'll work. VSCode might freak out though. -->
 
---- 
+---
 
 # Code time!
 
